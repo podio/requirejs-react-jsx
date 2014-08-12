@@ -1,7 +1,5 @@
 # requirejs-react-jsx
 
-[![Dependency Status](http://img.shields.io/gemnasium/podio/requirejs-react-jsx.svg?style=flat)](https://gemnasium.com/podio/requirejs-react-jsx)
-
 A RequireJS plugin for compiling React JSX files. Will use [react-tools](https://www.npmjs.org/package/react-tools) when compiling using r.js, and will use JSXTransformer when running in the browser in development. This allows us to support multiple bundles in r.js and exclude the JSXTransformer from all of them since we're requiring it dynamically and not explicitly.
 
 # Install
