@@ -25,6 +25,7 @@
     "tests"
   ],
   "dependencies": {
-    "react": "~0.11.1"
+    "react": "~0.11.1",
+    "requirejs-text": "~2.0.12"
   }
 }
