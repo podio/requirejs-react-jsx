@@ -87,7 +87,7 @@ define(function () {
     !!process.versions.node;
 
   var jsx = {
-    version: '0.1.0',
+    version: '0.1.1',
 
     load: function (name, parentRequire, onLoadNative, config) {
       var method = isNode ? 'ReactTools' : 'JSXTransformer';
