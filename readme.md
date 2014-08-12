@@ -1,6 +1,6 @@
 # requirejs-react-jsx
 
-A RequireJS plugin for compiling React JSX files. Will use [react-tools](https://www.npmjs.org/package/react-tools) when compiling using r.js, and will use JSXTransformer when running in the browser in development. This allows us to support multiple bundles in r.js and exclude the JSXTransformer from all of them since we're requiring it dynamically and not explicitly. We're also not depending on [requirejs-text](https://github.com/requirejs/text).
+A RequireJS plugin for compiling React JSX files. Will use [react-tools](https://www.npmjs.org/package/react-tools) when compiling using r.js, and will use JSXTransformer when running in the browser in development. This allows us to support multiple bundles in r.js and exclude the JSXTransformer from all of them since we're requiring it dynamically and not explicitly.
 
 # Install
 
