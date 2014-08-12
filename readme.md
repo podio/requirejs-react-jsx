@@ -8,7 +8,7 @@ A RequireJS plugin for compiling React JSX files. Will use [react-tools](https:/
 
 If you're not using [bower](http://bower.io/search/) to manage your dependencies (you should), you can just download the [jsx.js](jsx.js) file manually.
 
-Since we're also using [react-tools](https://www.npmjs.org/package/react-tools) for the build step while running in a node process, and not in the browser, you will to do install that also:
+Since we're also using [react-tools](https://www.npmjs.org/package/react-tools) for the build step while running in a node process, and not in the browser, you will to install that also:
 
  `$ npm install react-tools --save`
 
