@@ -15,12 +15,13 @@ define(function () {
         compiled = void 0;
 
       var path = parentRequire.toUrl(ensureJSXFileExtension(name, config));
+      var options = config.jsx && config.jsx.transformOptions || {};
 
       try {
         var content = fs.readFileSync(path, {encoding: 'utf8'});
 
         try {
-          compiled = ReactTools.transform(ensureJSXPragma(content));
+          compiled = ReactTools.transform(ensureJSXPragma(content), options);
         } catch (err) {
           throw new Error('jsx.js - Error while running JSXTransformer on ' + path + '\n' + err.message);
         }
@@ -43,9 +44,11 @@ define(function () {
     JSXTransformer: function (name, parentRequire, onLoadNative, config) {
       name = ensureJSXFileExtension(name, config);
 
+      var options = config.jsx && config.jsx.transformOptions || {};
+
       var onLoad = function(content, JSXTransformer) {
         try {
-          content = JSXTransformer.transform(ensureJSXPragma(content)).code;
+          content = JSXTransformer.transform(ensureJSXPragma(content), options).code;
         } catch (err) {
           onLoadNative.error(err);
         }

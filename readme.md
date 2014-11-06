@@ -64,7 +64,11 @@ require.config({
   },
 
   jsx: {
-    fileExtension: ".jsx"
+    fileExtension: ".jsx",
+    transformOptions: {
+      harmony: true,
+      stripTypes: false
+    }
   }
 });
 
