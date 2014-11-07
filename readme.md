@@ -2,7 +2,7 @@
 
 [![Dependency Status](http://img.shields.io/gemnasium/podio/requirejs-react-jsx.svg?style=flat-square)](https://gemnasium.com/podio/requirejs-react-jsx)
 
-A RequireJS plugin for compiling React JSX files. Will use [react-tools](https://www.npmjs.org/package/react-tools) when compiling using r.js, and will use JSXTransformer when running in the browser in development. This allows us to support multiple bundles in r.js and exclude the JSXTransformer from all of them since we're requiring it dynamically and not explicitly.
+A RequireJS plugin for compiling React JSX files. Will use [react-tools](https://www.npmjs.org/package/react-tools) when compiling using r.js, and will use JSXTransformer when running in the browser in development. This allows us to support multiple bundles in r.js and exclude the JSXTransformer from all of them since we're requiring it dynamically and not explicitly. This also means that we can get Source Maps in both development and production.
 
 # Install
 
@@ -10,7 +10,7 @@ A RequireJS plugin for compiling React JSX files. Will use [react-tools](https:/
 
 If you're not using [bower](http://bower.io/search/) to manage your dependencies (you should), you can just download the [jsx.js](jsx.js) file manually.
 
-Since we're also using [react-tools](https://www.npmjs.org/package/react-tools) for the build step while running in a node process, and not in the browser, you will to install that also:
+Since we're also using [react-tools](https://www.npmjs.org/package/react-tools) for the build step while running in a node process, and not in the browser, you will need to install that also:
 
  `$ npm install react-tools --save`
 
