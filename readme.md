@@ -68,7 +68,8 @@ require.config({
     transformOptions: {
       harmony: true,
       stripTypes: false
-    }
+    },
+    usePragma: false
   }
 });
 

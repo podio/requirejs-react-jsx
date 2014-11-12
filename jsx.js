@@ -21,7 +21,7 @@ define(function () {
         var content = fs.readFileSync(path, {encoding: 'utf8'});
 
         try {
-          compiled = ReactTools.transform(ensureJSXPragma(content), options);
+          compiled = ReactTools.transform(ensureJSXPragma(content, config), options);
         } catch (err) {
           throw new Error('jsx.js - Error while running JSXTransformer on ' + path + '\n' + err.message);
         }
@@ -48,7 +48,7 @@ define(function () {
 
       var onLoad = function(content, JSXTransformer) {
         try {
-          content = JSXTransformer.transform(ensureJSXPragma(content), options).code;
+          content = JSXTransformer.transform(ensureJSXPragma(content, config), options).code;
         } catch (err) {
           onLoadNative.error(err);
         }
@@ -77,8 +77,8 @@ define(function () {
     return name;
   }
 
-  function ensureJSXPragma(content){
-    if (-1 === content.indexOf('@jsx React.DOM')) {
+  function ensureJSXPragma(content, config){
+    if (config.usePragma && -1 === content.indexOf('@jsx React.DOM')) {
       content = "/** @jsx React.DOM */\n" + content;
     }
 
