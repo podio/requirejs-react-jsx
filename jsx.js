@@ -46,15 +46,28 @@ define(function () {
 
       var options = config.jsx && config.jsx.transformOptions || {};
 
+      if (options.inlineSourceMap) {
+        options.sourceMap = true;
+      }
+
       var onLoad = function(content, JSXTransformer) {
         try {
-          content = JSXTransformer.transform(ensureJSXPragma(content, config), options).code;
+          var transform = JSXTransformer.transform(ensureJSXPragma(content, config), options);
+
+          content = transform.code;
+
+          if (options.inlineSourceMap) {
+            var sourceMap = transform.sourceMap.toJSON();
+            sourceMap.file = name;
+            sourceMap.sources[0] = config.baseUrl + name;
+
+            content += "\n//@ sourceMappingURL=data:application/json;base64," + btoa(JSON.stringify(sourceMap));
+          } else {
+            content += "\n//# sourceURL=" + config.baseUrl + name;
+          }
         } catch (err) {
           onLoadNative.error(err);
         }
-
-        content += "\n//# sourceURL=" + location.protocol + "//" + location.hostname +
-          config.baseUrl + name;
 
         onLoadNative.fromText(content);
       };
