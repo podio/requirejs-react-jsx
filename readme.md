@@ -87,8 +87,9 @@ require(['jsx!app'], function(App){
 ```
 
 ### Building
-
-Call with `$ node bower_components/r.js/dist/r.js -o build.js`
+```sh
+$ node bower_components/r.js/dist/r.js -o build.js
+```
 
 In your [r.js](https://github.com/jrburke/r.js/) `build.js` config:
 
