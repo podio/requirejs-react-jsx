@@ -91,7 +91,7 @@ define(function () {
   }
 
   function ensureJSXPragma(content, config){
-    if (config.usePragma && -1 === content.indexOf('@jsx React.DOM')) {
+    if (config.usePragma && content.indexOf('@jsx React.DOM') === -1) {
       content = "/** @jsx React.DOM */\n" + content;
     }
 
