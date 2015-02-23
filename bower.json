@@ -25,6 +25,7 @@
     "tests"
   ],
   "dependencies": {
+    "r.js": ">=2.1.16",
     "react": ">=0.11.2",
     "requirejs-text": ">=2.0.12"
   }
