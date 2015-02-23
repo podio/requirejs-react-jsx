@@ -7,7 +7,7 @@ A RequireJS plugin for compiling React JSX files. Will use [react-tools](https:/
 # Install
 
 ```sh
-  $ bower install requirejs-react-jsx --save
+$ bower install requirejs-react-jsx --save
 ```
 
 If you're not using [bower](http://bower.io/search/) to manage your dependencies (you should), you can just download the [jsx.js](jsx.js) file manually.
@@ -15,7 +15,7 @@ If you're not using [bower](http://bower.io/search/) to manage your dependencies
 Since we're also using [react-tools](https://www.npmjs.org/package/react-tools) for the build step while running in a node process, and not in the browser, you will need to install that also:
 
 ```sh
-  $ npm install react-tools --save
+$ npm install react-tools --save
  ```
 
 # Usage
