@@ -56,7 +56,7 @@ define(function () {
 
           content = transform.code;
 
-          if (options.inlineSourceMap) {
+          if (options.inlineSourceMap && transform.sourceMap && typeof transform.sourceMap.toJSON === 'function') {
             var sourceMap = transform.sourceMap.toJSON();
             sourceMap.file = name;
             sourceMap.sources[0] = config.baseUrl + name;
