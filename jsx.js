@@ -61,7 +61,7 @@ define(function () {
             sourceMap.file = name;
             sourceMap.sources[0] = config.baseUrl + name;
 
-            content += "\n//@ sourceMappingURL=data:application/json;base64," + btoa(JSON.stringify(sourceMap));
+            content += "\n//# sourceMappingURL=data:application/json;base64," + btoa(JSON.stringify(sourceMap));
           } else {
             content += "\n//# sourceURL=" + config.baseUrl + name;
           }
