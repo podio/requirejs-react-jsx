@@ -43,7 +43,7 @@ define(function(require){
   }
 
   App.prototype.init = function () {
-    React.renderComponent(<this.AppView />, document.body);
+    React.render(<this.AppView />, document.body);
   };
 
   return App;
