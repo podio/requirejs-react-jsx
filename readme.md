@@ -73,7 +73,8 @@ require.config({
     fileExtension: ".jsx",
     transformOptions: {
       harmony: true,
-      stripTypes: false
+      stripTypes: false,
+      inlineSourceMap: true
     },
     usePragma: false
   }
