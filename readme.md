@@ -5,6 +5,10 @@
 
 A RequireJS plugin for compiling React JSX files. Will use [react-tools](https://www.npmjs.org/package/react-tools) when compiling using `r.js`, and will use `JSXTransformer` when running in the browser in development. This allows us to support multiple bundles in `r.js` and exclude the `JSXTransformer` from all of them since we're requiring it dynamically and not explicitly. This also means that we can get `1:1` Source Maps in both development and production.
 
+# Example
+
+![http://i.imgur.com/upv8B0g.png](http://i.imgur.com/upv8B0g.png)
+
 # Install
 
 ```sh
