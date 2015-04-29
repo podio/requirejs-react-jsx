@@ -44,7 +44,10 @@ define(function () {
     JSXTransformer: function (name, parentRequire, onLoadNative, config) {
       name = ensureJSXFileExtension(name, config);
 
-      var options = config.jsx && config.jsx.transformOptions || {};
+      var oldOptions = config.jsx && config.jsx.transformOptions || {}; // @deprecated
+      var options = config.config.config.jsx && config.config.jsx.transformOptions || oldOptions ||  {
+        harmony: true // enable harmony by default
+      };
 
       if (options.inlineSourceMap) {
         options.sourceMap = true;
