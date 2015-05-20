@@ -45,7 +45,7 @@ define(function () {
       name = ensureJSXFileExtension(name, config);
 
       var oldOptions = config.jsx && config.jsx.transformOptions || {}; // @deprecated
-      var options = config.config.config.jsx && config.config.jsx.transformOptions || oldOptions ||  {
+      var options = config.config && config.config.jsx && config.config.jsx.transformOptions || oldOptions ||  {
         harmony: true // enable harmony by default
       };
 
