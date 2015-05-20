@@ -73,14 +73,16 @@ require.config({
     "JSXTransformer": "JSXTransformer"
   },
 
-  jsx: {
-    fileExtension: ".jsx",
-    transformOptions: {
-      harmony: true,
-      stripTypes: false,
-      inlineSourceMap: true
-    },
-    usePragma: false
+  config: {
+    jsx: {
+      fileExtension: ".jsx",
+      transformOptions: {
+        harmony: true,
+        stripTypes: false,
+        inlineSourceMap: true
+      },
+      usePragma: false
+    }
   }
 });
 
