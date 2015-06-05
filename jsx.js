@@ -15,7 +15,10 @@ define(function () {
         compiled = void 0;
 
       var path = parentRequire.toUrl(ensureJSXFileExtension(name, config));
-      var options = config.jsx && config.jsx.transformOptions || {};
+      var oldOptions = config.jsx && config.jsx.transformOptions || {}; // @deprecated
+      var options = config.config && config.config.jsx && config.config.jsx.transformOptions || oldOptions ||  {
+        harmony: true // enable harmony by default
+      };
 
       try {
         var content = fs.readFileSync(path, {encoding: 'utf8'});
