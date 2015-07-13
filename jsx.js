@@ -29,6 +29,12 @@ define(function () {
           throw new Error('jsx.js - Error while running JSXTransformer on ' + path + '\n' + err.message);
         }
 
+        if (process.env.ISTANBUL === 'true') {
+          var istanbul = require.nodeRequire('istanbul');
+          var instrumenter = new istanbul.Instrumenter();
+
+          compiled = instrumenter.instrumentSync(compiled, path);
+        }
       } catch (err) {
         onLoadNative.error(err);
       }
