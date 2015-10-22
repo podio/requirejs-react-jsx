@@ -39,6 +39,41 @@ define(function () {
 
       onLoadNative.fromText(compiled);
     },
+    
+    /**
+     * Dynamically requires Babel and the text plugin async
+     * and transforms the JSX in the browser.
+     * The configproperty 'babelOptions' will be passed to Babel.
+    */
+    babel: function (name, parentRequire, onLoadNative, config) {
+      name = ensureJSXFileExtension(name, config);
+
+      var options = config.jsx && config.jsx.babelOptions || {};
+
+      var onLoad = function(content, babel) {
+
+        try {
+          var transform = babel.transform(ensureJSXPragma(content, config), options);
+
+          content = transform.code;
+
+          if (transform.map) {
+            content += "\n//# sourceURL=" + config.baseUrl + name;
+          }
+
+        } catch (err) {
+          onLoadNative.error(err);
+        }
+
+        onLoadNative.fromText(content);
+      };
+
+      parentRequire(['babel', 'text'], function (babel, text) {
+        text.load(name, parentRequire, function (content) {
+          onLoad(content, babel);
+        }, config);
+      });
+    },
 
     /**
      * Dynamically requires JSXTransformer and the text plugin async
@@ -117,7 +152,7 @@ define(function () {
     version: '0.1.1',
 
     load: function (name, parentRequire, onLoadNative, config) {
-      var method = isNode ? 'ReactTools' : 'JSXTransformer';
+      var method = isNode ? 'ReactTools' : (config.jsx.transformer || 'JSXTransformer');
 
       transform[method].call(this, name, parentRequire, onLoadNative, config);
     },
