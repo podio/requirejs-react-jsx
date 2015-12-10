@@ -33,9 +33,7 @@ define(function () {
               coverageVariable: coverageVariable
             });
 
-            var Path = require.nodeRequire('path');
-
-            compiled = instrumenter.instrumentSync(compiled, Path.join(process.cwd(), path));
+            compiled = instrumenter.instrumentSync(compiled, path);
           }
         } catch (err) {
           throw new Error('jsx.js - Error while running JSXTransformer on ' + path + '\n' + err.message);
