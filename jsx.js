@@ -25,6 +25,18 @@ define(function () {
 
         try {
           compiled = ReactTools.transform(ensureJSXPragma(content, config), options);
+
+          if (process.env.ISTANBUL === 'true') {
+            var istanbul = require.nodeRequire('istanbul');
+            var coverageVariable = Object.keys(global).filter(function (key) { return key.indexOf('$$cov_') === 0 })[0];
+            var instrumenter = new istanbul.Instrumenter({
+              coverageVariable: coverageVariable
+            });
+
+            var Path = require.nodeRequire('path');
+
+            compiled = instrumenter.instrumentSync(compiled, Path.join(process.cwd(), path));
+          }
         } catch (err) {
           throw new Error('jsx.js - Error while running JSXTransformer on ' + path + '\n' + err.message);
         }
