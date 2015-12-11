@@ -144,7 +144,9 @@ In your [r.js](https://github.com/jrburke/r.js/) `build.js` config:
 
 If you want code coverage with [Istanbul](https://github.com/gotwarlost/istanbul) you will have to do a little extra work. Istanbul only instruments code required by nodes `require` function by default. However, you can make Istanbul also instrument RequireJS loaded dependencies in a node environment by adding the `--hook-run-in-context` switch.
 
-The `--hook-run-in-context` only makes Istanbul pick up normally loaded RequireJS files though, and not the ones transformed by requirejs-react-jsx. So requirejs-react-jsx has an added programmatic code instrumentation which is triggered based on the `ISTANBUL` environment variable being `'true'`.
+requirejs-react-jsx will automatically detect that it is being run in an Istanbul enabled environment and
+
+The `--hook-run-in-context` only makes Istanbul pick up normally loaded RequireJS files though, and not the ones transformed by RequireJS plugins. So requirejs-react-jsx will automatically detect that it is being run in an Istanbul enabled environment and manually instrument the transpiled code so Istanbul can collect coverage.
 
 A full example of a coverage script in `package.json` could look like this:
 
@@ -152,7 +154,7 @@ A full example of a coverage script in `package.json` could look like this:
 {
   "scripts": {
     "test": "mocha",
-    "coverage": "ISTANBUL=true istanbul cover --hook-run-in-context _mocha"
+    "coverage": "istanbul cover --hook-run-in-context _mocha"
   }
 }
 ```

@@ -26,7 +26,7 @@ define(function () {
         try {
           compiled = ReactTools.transform(ensureJSXPragma(content, config), options);
 
-          if (process.env.ISTANBUL === 'true') {
+          if (process.env.running_under_istanbul) {
             var istanbul = require.nodeRequire('istanbul');
             var coverageVariable = Object.keys(global).filter(function (key) { return key.indexOf('$$cov_') === 0 })[0];
             var instrumenter = new istanbul.Instrumenter({
