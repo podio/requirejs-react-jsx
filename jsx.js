@@ -63,6 +63,7 @@ define(function () {
       var onLoad = function(content, babel) {
 
         try {
+          options.filename = name;
           var transform = babel.transform(ensureJSXPragma(content, config), options);
 
           content = transform.code;
