@@ -1,6 +1,6 @@
 {
   "name": "requirejs-react-jsx",
-  "version": "0.16.2",
+  "version": "1.0.0",
   "description": "A RequireJS plugin for loading jsx in require.js and r.js",
   "main": "jsx.js",
   "scripts": {
