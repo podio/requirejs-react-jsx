@@ -34,7 +34,9 @@ define(function () {
         var istanbul = require.nodeRequire('istanbul');
         var coverageVariable = Object.keys(global).filter(function (key) { return key.indexOf('$$cov_') === 0 })[0];
         var instrumenter = new istanbul.Instrumenter({
-          coverageVariable: coverageVariable
+          coverageVariable: coverageVariable,
+          noCompact: true,
+          embedSource: true
         });
 
         compiled = instrumenter.instrumentSync(compiled, path);
