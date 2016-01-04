@@ -27,7 +27,7 @@ $ npm install react-tools --save
 
 ### Setup
 
-`app.js`
+`app.jsx`
 
 ```js
 define(function(require){
@@ -61,7 +61,7 @@ define(function(require){
 require.config({
   paths: {
     "react": "bower_components/react/react-with-addons",
-    "JSXTransformer": "bower_components/react/JSXTransformer",
+    "babel": "bower_components/requirejs-react-jsx/babel-5.8.34.min",
     "jsx": "bower_components/requirejs-react-jsx/jsx",
     "text": "bower_components/requirejs-text/text"
   },
@@ -69,19 +69,13 @@ require.config({
   shim : {
     "react": {
       "exports": "React"
-    },
-    "JSXTransformer": "JSXTransformer"
+    }
   },
 
   config: {
-    jsx: {
-      fileExtension: ".jsx",
-      transformOptions: {
-        harmony: true,
-        stripTypes: false,
-        inlineSourceMap: true
-      },
-      usePragma: false
+    babel: {
+      sourceMaps: "inline", // One of [false, 'inline', 'both']. See https://babeljs.io/docs/usage/options/
+      fileExtension: ".jsx" // Can be set to anything, like .es6 or .js. Defaults to .jsx
     }
   }
 });
@@ -92,18 +86,6 @@ require(['jsx!app'], function(App){
   app.init();
 
 });
-```
-
-Can also be configured with Babel:
-```javascript
-config: {
-  jsx: {
-    transformer: "babel",
-    babelOptions: {
-      sourceMaps: 'inline'
-    }
-  }
-}
 ```
 
 ### Building
@@ -158,6 +140,10 @@ A full example of a coverage script in `package.json` could look like this:
   }
 }
 ```
+
+# Changelog
+
+**1.0** - Eliminated all other transformer options than Babel. Switched config variable from `jsx` to `babel`. Added browser compatible babel 5.x build to repository to use for in-browser compilations
 
 # License
 
