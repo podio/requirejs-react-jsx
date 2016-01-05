@@ -85,10 +85,12 @@ define(function () {
     load: isNode ? babelSync : babelAsync,
 
     write: function (pluginName, name, write) {
-      if (typeof buildMap[name] === 'text') {
+      if (typeof buildMap[name] === 'string') {
         var text = buildMap[name];
 
         write.asModule(pluginName + "!" + name, text);
+      } else {
+        throw new Error('Module not found in build map: ' + name);
       }
     }
   };
